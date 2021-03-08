@@ -1,0 +1,18 @@
+<h2>Todos page</h2>
+
+{{#if todos.length}}
+  <ul>
+    {{#each todos}}
+      <li class="todo">
+        <label>
+          <input type="checkbox" {{#if completed}}checked{{/if}}>
+          <span {{#if completed}}class="completed" {{/if}}>{{title}}</span>
+
+          <button class="btn btn-small">Save</button>
+        </label>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No todos!</p>
+{{/if}}
