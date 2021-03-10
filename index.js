@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -17,6 +18,10 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: true,
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(todoRoutes);

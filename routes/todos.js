@@ -37,4 +37,12 @@ router.post('/complete', async (req, res) => {
 	res.redirect('/');
 });
 
+router.post('/remove', async (req, res) => {
+	const todo = await Todo.findById(req.body.id);
+
+	await todo.remove();
+
+	res.redirect('/');
+});
+
 module.exports = router;
