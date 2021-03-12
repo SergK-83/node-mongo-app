@@ -9,15 +9,16 @@ todoRemoveBtnList.forEach((btn) => {
 		const todo = this.closest('.todo');
 		const todoId = todo.querySelector('input[name=id]').value;
 
-		console.log(todoId);
-
-		await fetch('/remove', {
+		 let promise = await fetch('/remove', {
 			method: 'POST',
 			headers: {
-				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({id: todoId})
-		});
+		}).then(response => {
+			if (response.redirected) {
+				document.location = response.url;
+			}
+		 });
 	});
 });
